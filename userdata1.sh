@@ -1,12 +1,12 @@
 #!/bin/bash
-apt update
-apt install -y apache2
+sudo apt update
+sudo apt install -y apache2
 
 # Get the instance ID using the instance metadata
-3#INSTANCE_ID=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
+INSTANCE_ID=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
 
 # Install the AWS CLI
-apt install -y awscli
+sudo apt install -y awscli
 
 # Download the images from S3 bucket
 #aws s3 cp s3://myterraformprojectbucket2023/project.webp /var/www/html/project.png --acl public-read
@@ -39,5 +39,5 @@ cat <<EOF > /var/www/html/index.html
 EOF
 
 # Start Apache and enable it on boot
-systemctl start apache2
-systemctl enable apache2
+sudo systemctl start apache2
+sudo systemctl enable apache2
